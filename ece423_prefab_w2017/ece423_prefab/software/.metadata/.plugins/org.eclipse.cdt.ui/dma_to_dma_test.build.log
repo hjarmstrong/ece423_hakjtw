@@ -1,0 +1,9 @@
+22:16:52 **** Incremental Build of configuration Nios II for project dma_to_dma_test ****
+make all 
+Info: Building ../dma_to_dma_test_bsp/
+C:/software/Altera/15.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../dma_to_dma_test_bsp/
+[BSP build complete]
+[dma_to_dma_test build complete]
+
+22:16:54 Build Finished (took 2s.83ms)
+

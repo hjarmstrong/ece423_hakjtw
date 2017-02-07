@@ -1,0 +1,76 @@
+/*
+ * "Hello World" example.
+ *
+ * This example prints 'Hello from Nios II' to the STDOUT stream. It runs on
+ * the Nios II 'standard', 'full_featured', 'fast', and 'low_cost' example
+ * designs. It runs with or without the MicroC/OS-II RTOS and requires a STDOUT
+ * device in your system's hardware.
+ * The memory footprint of this hosted application is ~69 kbytes by default
+ * using the standard reference design.
+ *
+ * For a reduced footprint version of this template, and an explanation of how
+ * to reduce the memory footprint for a given application, see the
+ * "small_hello_world" template.
+ *
+ */
+
+#include <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include <io.h>
+#include <sys/alt_cache.h>
+#include <malloc.h>
+#include <priv/alt_file.h>
+#include <system.h>
+#include <altera_msgdma.h>
+#include <altera_msgdma_descriptor_regs.h>
+#include <altera_msgdma_csr_regs.h>
+
+#define DESC_CONTROL      (ALTERA_MSGDMA_DESCRIPTOR_CONTROL_PARK_READS_MASK | ALTERA_MSGDMA_DESCRIPTOR_CONTROL_GENERATE_SOP_MASK | ALTERA_MSGDMA_DESCRIPTOR_CONTROL_GENERATE_EOP_MASK | ALTERA_MSGDMA_DESCRIPTOR_CONTROL_GO_MASK)  // Also set the park bit so that we can let the mSGDMA worry about the frame DUPLICATION
+
+
+int main()
+{
+  printf("Hello from Nios II!\n");
+
+  uint32_t *japan = malloc(sizeof(uint32_t) * 2); //{0xFFFBFFFF, 0xDEADCAFE};
+  uint32_t *japan_out = malloc(sizeof(uint32_t) * 2);
+
+  japan[0] = 0xFFFBFFFF;
+  japan[1] = 0xDEADCAFE;
+
+  japan_out[0] = 0xFFFFFFFF;
+  japan_out[1] = 0xFFFFFFFF;
+
+
+  alt_msgdma_dev *to_dma, *from_dma;
+  alt_msgdma_standard_descriptor *in_base, *out_base;
+
+  in_base = (alt_msgdma_standard_descriptor*) memalign(32,
+		  3 * sizeof(alt_msgdma_standard_descriptor));
+  out_base = (alt_msgdma_standard_descriptor*) memalign(32,
+		  3 * sizeof(alt_msgdma_standard_descriptor));
+
+  to_dma = alt_msgdma_open(TO_IDCT_HWACEL_CSR_NAME);
+  from_dma = alt_msgdma_open(FROM_IDCT_HWACEL_CSR_NAME);
+
+  while(0 != alt_msgdma_construct_standard_mm_to_st_descriptor(to_dma,
+  				in_base,
+  				(alt_u32 *) japan, 4,
+  				DESC_CONTROL));
+
+  while(0 != alt_msgdma_construct_standard_st_to_mm_descriptor(from_dma,
+  				out_base,
+  				(alt_u32 *) japan_out, 4,
+  				DESC_CONTROL));
+
+	while (alt_msgdma_standard_descriptor_async_transfer(to_dma,
+			in_base)
+			!= 0);
+
+
+
+  return 0;
+}

@@ -1,0 +1,13 @@
+obj/default/encoder/fdct.o: encoder/fdct.c encoder/mjpeg423_encoder.h \
+ encoder/../common/mjpeg423_types.h encoder/../common/dct_math.h \
+ encoder/../common/mjpeg423_types.h encoder/../common/util.h
+
+encoder/mjpeg423_encoder.h:
+
+encoder/../common/mjpeg423_types.h:
+
+encoder/../common/dct_math.h:
+
+encoder/../common/mjpeg423_types.h:
+
+encoder/../common/util.h:
