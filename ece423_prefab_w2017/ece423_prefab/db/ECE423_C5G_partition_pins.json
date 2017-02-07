@@ -156,10 +156,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "HDMI_TX_DE",
-					"strict" : false
-				},
-				{
 					"name" : "HDMI_TX_D[0]",
 					"strict" : false
 				},
@@ -256,6 +252,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "HDMI_TX_DE",
+					"strict" : false
+				},
+				{
 					"name" : "HDMI_TX_HS",
 					"strict" : false
 				},
@@ -305,22 +305,6 @@
 				},
 				{
 					"name" : "DDR2LP_DQS_p[3]",
-					"strict" : false
-				},
-				{
-					"name" : "SD_DAT[0]",
-					"strict" : false
-				},
-				{
-					"name" : "SD_DAT[1]",
-					"strict" : false
-				},
-				{
-					"name" : "SD_DAT[2]",
-					"strict" : false
-				},
-				{
-					"name" : "SD_DAT[3]",
 					"strict" : false
 				},
 				{
@@ -389,6 +373,22 @@
 				},
 				{
 					"name" : "SRAM_D[15]",
+					"strict" : false
+				},
+				{
+					"name" : "SD_DAT[0]",
+					"strict" : false
+				},
+				{
+					"name" : "SD_DAT[1]",
+					"strict" : false
+				},
+				{
+					"name" : "SD_DAT[2]",
+					"strict" : false
+				},
+				{
+					"name" : "SD_DAT[3]",
 					"strict" : false
 				},
 				{

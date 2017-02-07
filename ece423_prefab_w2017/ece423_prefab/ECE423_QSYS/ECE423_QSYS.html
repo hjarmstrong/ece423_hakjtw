@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2017.02.06.21:22:14</td>
+    <td class="l">2017.02.06.22:31:02</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -2087,9 +2087,9 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="neighbor" rowspan="2">
-       <a href="#module_to_idct_hwacel">to_idct_hwacel</a>
+       <a href="#module_idct_accel_0">idct_accel_0</a>
       </td>
-      <td class="from">st_source&#160;&#160;</td>
+      <td class="from">dst&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;st_sink</td>
@@ -2835,10 +2835,22 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <table class="connectionboxes">
      <tr>
       <td class="neighbor" rowspan="2">
+       <a href="#module_to_idct_hwacel">to_idct_hwacel</a>
+      </td>
+      <td class="from">st_source&#160;&#160;</td>
+      <td class="main" rowspan="10">idct_accel_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;src</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
        <a href="#module_clk_125">clk_125</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
-      <td class="main" rowspan="5">idct_accel_0</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clock_sink</td>
@@ -2854,6 +2866,19 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset_sink</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">dst&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_from_idct_hwacel">from_idct_hwacel</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;st_sink</td>
      </tr>
     </table>
    </div>
@@ -10810,7 +10835,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">timestamp</td>
-        <td class="parametervalue">1486434132</td>
+        <td class="parametervalue">1486438260</td>
        </tr>
        <tr>
         <td class="parametername">AUTO_DEVICE_FAMILY</td>
@@ -10839,7 +10864,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">TIMESTAMP</td>
-        <td class="parametervalue">1486434132</td>
+        <td class="parametervalue">1486438260</td>
        </tr>
       </table>
      </td>
@@ -11308,13 +11333,13 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">st_source&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
-       <a href="#module_from_idct_hwacel">from_idct_hwacel</a>
+       <a href="#module_idct_accel_0">idct_accel_0</a>
       </td>
      </tr>
      <tr>
       <td></td>
       <td></td>
-      <td class="to">&#160;&#160;st_sink</td>
+      <td class="to">&#160;&#160;src</td>
      </tr>
     </table>
    </div>
@@ -14438,7 +14463,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   <table class="blueBar">
    <tr>
     <td class="l">generation took 0.02 seconds</td>
-    <td class="r">rendering took 0.67 seconds</td>
+    <td class="r">rendering took 0.52 seconds</td>
    </tr>
   </table>
  </body>

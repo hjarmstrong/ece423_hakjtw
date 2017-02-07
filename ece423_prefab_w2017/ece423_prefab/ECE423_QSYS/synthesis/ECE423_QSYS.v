@@ -53,15 +53,18 @@ module ECE423_QSYS (
 		output wire        video_clk_clk                                 //           video_clk.clk
 	);
 
+	wire          idct_accel_0_dst_valid;                                          // idct_accel_0:dst_valid -> from_idct_hwacel:st_sink_valid
+	wire   [31:0] idct_accel_0_dst_data;                                           // idct_accel_0:dst_data -> from_idct_hwacel:st_sink_data
+	wire          idct_accel_0_dst_ready;                                          // from_idct_hwacel:st_sink_ready -> idct_accel_0:dst_ready
 	wire          pixel_conv_out_valid;                                            // Pixel_Conv:valid_out -> video_sync_generator_0:valid
 	wire   [23:0] pixel_conv_out_data;                                             // Pixel_Conv:data_out -> video_sync_generator_0:data
 	wire          pixel_conv_out_ready;                                            // video_sync_generator_0:ready -> Pixel_Conv:ready_in
 	wire          pixel_conv_out_startofpacket;                                    // Pixel_Conv:sop_out -> video_sync_generator_0:sop
 	wire          pixel_conv_out_endofpacket;                                      // Pixel_Conv:eop_out -> video_sync_generator_0:eop
 	wire          pixel_conv_out_empty;                                            // Pixel_Conv:empty_out -> video_sync_generator_0:empty
-	wire          to_idct_hwacel_st_source_valid;                                  // to_idct_hwacel:st_source_valid -> from_idct_hwacel:st_sink_valid
-	wire   [31:0] to_idct_hwacel_st_source_data;                                   // to_idct_hwacel:st_source_data -> from_idct_hwacel:st_sink_data
-	wire          to_idct_hwacel_st_source_ready;                                  // from_idct_hwacel:st_sink_ready -> to_idct_hwacel:st_source_ready
+	wire          to_idct_hwacel_st_source_valid;                                  // to_idct_hwacel:st_source_valid -> idct_accel_0:src_valid
+	wire   [31:0] to_idct_hwacel_st_source_data;                                   // to_idct_hwacel:st_source_data -> idct_accel_0:src_data
+	wire          to_idct_hwacel_st_source_ready;                                  // idct_accel_0:src_ready -> to_idct_hwacel:st_source_ready
 	wire          reset_controller_0_reset_out_reset;                              // reset_controller_0:reset_out -> [lpddr2:mp_cmd_reset_n_0_reset_n, lpddr2:mp_cmd_reset_n_1_reset_n, lpddr2:mp_cmd_reset_n_2_reset_n, lpddr2:mp_rfifo_reset_n_0_reset_n, lpddr2:mp_rfifo_reset_n_1_reset_n, lpddr2:mp_wfifo_reset_n_0_reset_n, lpddr2:mp_wfifo_reset_n_1_reset_n, lpddr2:soft_reset_n, rst_controller:reset_in0, rst_controller_001:reset_in1, rst_controller_002:reset_in0, rst_controller_003:reset_in0, video_pll:rst]
 	wire          sram_sharer_tcm_request;                                         // sram_sharer:request -> sram_bridge:request
 	wire    [1:0] sram_sharer_tcm_sram_tcm_byteenable_n_out_out;                   // sram_sharer:sram_tcm_byteenable_n_out -> sram_bridge:tcs_sram_tcm_byteenable_n_out
@@ -364,9 +367,9 @@ module ECE423_QSYS (
 		.descriptor_slave_writedata   (mm_interconnect_0_from_idct_hwacel_descriptor_slave_writedata),   //                 .writedata
 		.descriptor_slave_byteenable  (mm_interconnect_0_from_idct_hwacel_descriptor_slave_byteenable),  //                 .byteenable
 		.csr_irq_irq                  (irq_mapper_receiver2_irq),                                        //          csr_irq.irq
-		.st_sink_data                 (to_idct_hwacel_st_source_data),                                   //          st_sink.data
-		.st_sink_valid                (to_idct_hwacel_st_source_valid),                                  //                 .valid
-		.st_sink_ready                (to_idct_hwacel_st_source_ready)                                   //                 .ready
+		.st_sink_data                 (idct_accel_0_dst_data),                                           //          st_sink.data
+		.st_sink_valid                (idct_accel_0_dst_valid),                                          //                 .valid
+		.st_sink_ready                (idct_accel_0_dst_ready)                                           //                 .ready
 	);
 
 	ECE423_QSYS_i2c_scl i2c_scl (
@@ -393,13 +396,13 @@ module ECE423_QSYS (
 
 	idct_accel idct_accel_0 (
 		.clk       (clk_125_clk),                        // clock_sink.clk
-		.src_data  (),                                   //        src.data
-		.src_ready (),                                   //           .ready
-		.src_valid (),                                   //           .valid
+		.src_data  (to_idct_hwacel_st_source_data),      //        src.data
+		.src_ready (to_idct_hwacel_st_source_ready),     //           .ready
+		.src_valid (to_idct_hwacel_st_source_valid),     //           .valid
 		.reset     (rst_controller_002_reset_out_reset), // reset_sink.reset
-		.dst_data  (),                                   //        dst.data
-		.dst_ready (),                                   //           .ready
-		.dst_valid ()                                    //           .valid
+		.dst_data  (idct_accel_0_dst_data),              //        dst.data
+		.dst_ready (idct_accel_0_dst_ready),             //           .ready
+		.dst_valid (idct_accel_0_dst_valid)              //           .valid
 	);
 
 	ECE423_QSYS_jtag_uart jtag_uart (

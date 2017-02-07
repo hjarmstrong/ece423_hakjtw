@@ -1920,6 +1920,11 @@
  <connection
    kind="avalon_streaming"
    version="15.1"
+   start="idct_accel_0.dst"
+   end="from_idct_hwacel.st_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="15.1"
    start="video_fifo.out"
    end="Pixel_Conv.in" />
  <connection
@@ -1936,7 +1941,7 @@
    kind="avalon_streaming"
    version="15.1"
    start="to_idct_hwacel.st_source"
-   end="from_idct_hwacel.st_sink" />
+   end="idct_accel_0.src" />
  <connection kind="clock" version="15.1" start="clk_125.clk" end="cpu.clk" />
  <connection kind="clock" version="15.1" start="clk_125.clk" end="sysid.clk" />
  <connection kind="clock" version="15.1" start="clk_125.clk" end="timer_0.clk" />

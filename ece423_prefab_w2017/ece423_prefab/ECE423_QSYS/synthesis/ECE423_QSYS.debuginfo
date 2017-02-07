@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="ECE423_QSYS" kind="system" version="15.1" fabric="QSYS">
  <!-- Format version 15.1 185 (Future versions may contain additional information.) -->
- <!-- 2017.02.06.21:26:01 -->
+ <!-- 2017.02.06.22:34:36 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1486434132</value>
+  <value>1486438260</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -29439,7 +29439,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1486434132</value>
+   <value>1486438260</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -29459,7 +29459,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1486434132</value>
+   <value>1486438260</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -29475,7 +29475,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1486434132</value>
+   <value>1486438260</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>
@@ -54141,6 +54141,33 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <connection
+   name="idct_accel_0.dst/from_idct_hwacel.st_sink"
+   kind="avalon_streaming"
+   version="15.1"
+   start="idct_accel_0.dst"
+   end="from_idct_hwacel.st_sink">
+  <parameter name="deviceFamily">
+   <type>java.lang.String</type>
+   <value>UNKNOWN</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <parameter name="generateLegacySim">
+   <type>boolean</type>
+   <value>false</value>
+   <derived>false</derived>
+   <enabled>true</enabled>
+   <visible>true</visible>
+   <valid>true</valid>
+  </parameter>
+  <startModule>idct_accel_0</startModule>
+  <startConnectionPoint>dst</startConnectionPoint>
+  <endModule>from_idct_hwacel</endModule>
+  <endConnectionPoint>st_sink</endConnectionPoint>
+ </connection>
+ <connection
    name="Pixel_Conv.out/video_sync_generator_0.in"
    kind="avalon_streaming"
    version="15.1"
@@ -54168,11 +54195,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>in</endConnectionPoint>
  </connection>
  <connection
-   name="to_idct_hwacel.st_source/from_idct_hwacel.st_sink"
+   name="to_idct_hwacel.st_source/idct_accel_0.src"
    kind="avalon_streaming"
    version="15.1"
    start="to_idct_hwacel.st_source"
-   end="from_idct_hwacel.st_sink">
+   end="idct_accel_0.src">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -54191,8 +54218,8 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>to_idct_hwacel</startModule>
   <startConnectionPoint>st_source</startConnectionPoint>
-  <endModule>from_idct_hwacel</endModule>
-  <endConnectionPoint>st_sink</endConnectionPoint>
+  <endModule>idct_accel_0</endModule>
+  <endConnectionPoint>src</endConnectionPoint>
  </connection>
  <connection
    name="clk_125.clk/cpu.clk"
@@ -58934,7 +58961,7 @@ parameters are a RESULT of the module parameters. -->
   <version>15.1</version>
  </plugin>
  <plugin>
-  <instanceCount>2</instanceCount>
+  <instanceCount>3</instanceCount>
   <name>avalon_streaming</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
@@ -59006,5 +59033,5 @@ parameters are a RESULT of the module parameters. -->
   <version>15.1</version>
  </plugin>
  <reportVersion>15.1 185</reportVersion>
- <uniqueIdentifier>08606E7A71F70000015A16612BA0</uniqueIdentifier>
+ <uniqueIdentifier>08606E7A71F70000015A16A022B0</uniqueIdentifier>
 </EnsembleReport>

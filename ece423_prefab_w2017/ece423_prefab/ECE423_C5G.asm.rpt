@@ -1,5 +1,5 @@
 Assembler report for ECE423_C5G
-Mon Feb 06 21:59:09 2017
+Mon Feb 06 23:05:38 2017
 Quartus Prime Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 
 
@@ -39,7 +39,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Mon Feb 06 21:59:09 2017 ;
+; Assembler Status      ; Successful - Mon Feb 06 23:05:38 2017 ;
 ; Revision Name         ; ECE423_C5G                            ;
 ; Top-level Entity Name ; ECE423_C5G                            ;
 ; Family                ; Cyclone V                             ;
@@ -80,8 +80,8 @@ agreement for further details.
 ; Option         ; Setting                                                                    ;
 +----------------+----------------------------------------------------------------------------+
 ; Device         ; 5CGXFC5C6F27C7                                                             ;
-; JTAG usercode  ; 0x03490B58                                                                 ;
-; Checksum       ; 0x03490B58                                                                 ;
+; JTAG usercode  ; 0x033DA410                                                                 ;
+; Checksum       ; 0x033DA410                                                                 ;
 +----------------+----------------------------------------------------------------------------+
 
 
@@ -91,13 +91,13 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 15.1.0 Build 185 10/21/2015 SJ Standard Edition
-    Info: Processing started: Mon Feb 06 21:58:26 2017
+    Info: Processing started: Mon Feb 06 23:04:52 2017
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off ECE423_C5G -c ECE423_C5G
 Info (115030): Assembler is generating device programming files
 Info: Quartus Prime Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 1130 megabytes
-    Info: Processing ended: Mon Feb 06 21:59:10 2017
-    Info: Elapsed time: 00:00:44
-    Info: Total CPU time (on all processors): 00:00:44
+    Info: Peak virtual memory: 1119 megabytes
+    Info: Processing ended: Mon Feb 06 23:05:39 2017
+    Info: Elapsed time: 00:00:47
+    Info: Total CPU time (on all processors): 00:00:46
 
 
