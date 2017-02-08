@@ -44,17 +44,28 @@ int main()
 {
   printf("Hello from Nios II!\n");
 
-  volatile uint32_t *japan = malloc(sizeof(uint32_t) * 40); //{0xFFFBFFFF, 0xDEADCAFE};
-  volatile uint32_t *japan_out = malloc(sizeof(uint32_t) * 40);
+  uint32_t *japan = malloc(sizeof(uint32_t) * 40); //{0xFFFBFFFF, 0xDEADCAFE};
+  uint32_t *japan_out = malloc(sizeof(uint32_t) * 40);
 
   japan[0] = 0xFFFBFFFF;
   japan[1] = 0xDEADCAFE;
 
-  for(unsigned int i = 2; i< 40; i++)
-	  japan[i] = i;
+  uint32_t t;
+  scanf("%d", &t);
+  for(unsigned int i = 2; i < 40; i++)
+  {
+	  japan[i] = ~(i+t);
+//	  IOWR_32DIRECT(japan,i*4, i);
+//	  alt_dcache_flush_all();
+  }
 
-  for(unsigned int i = 0; i< 40; i++)
-	  japan_out[i] = 0xFFFFFFFF;
+  for(unsigned int i = 0; i < 40; i++)
+  {
+	  IOWR_32DIRECT(japan_out,i*4, 0xCAFECAFE); //japan_out[i] = 0xCAFECAFE;
+//	  alt_dcache_flush_all();
+  }
+
+  japan[38] = 0xFFFFFFFF;
 
   alt_dcache_flush_all();
 
@@ -71,39 +82,40 @@ int main()
 
   while(0 != alt_msgdma_construct_standard_mm_to_st_descriptor(to_dma,
   				out_base,
-  				(alt_u32 *) japan, 1280,
+  				(alt_u32 *) japan, sizeof(uint32_t) * 40,
   				DESC_CONTROL));
 
   while(0 != alt_msgdma_construct_standard_st_to_mm_descriptor(from_dma,
   				in_base,
-  				(alt_u32 *) japan_out, 1280,
+  				(alt_u32 *) japan_out, sizeof(uint32_t) * 40,
   				DESC_CONTROL));
 
-  /*alt_msgdma_register_callback(
+  alt_msgdma_register_callback(
   	to_dma,
   	callvack,
-  	ALTERA_MSGDMA_GLOBAL_INTERUPT_MASK,
+  	ALTERA_MSGDMA_CSR_GLOBAL_INTERRUPT_MASK,
   	0);
 
   alt_msgdma_register_callback(
   	from_dma,
   	callvack,
-  	DESC_CONTROL,
-  	0);*/
+  	ALTERA_MSGDMA_CSR_GLOBAL_INTERRUPT_MASK,
+  	0);
 
-	while (alt_msgdma_standard_descriptor_sync_transfer(to_dma,
+
+	while (alt_msgdma_standard_descriptor_async_transfer(to_dma,
 			out_base)
 			!= 0);
 
-	//while(!got_mem_yet);
-	//got_mem_yet = 0;
+	while(!got_mem_yet);
+	got_mem_yet = 0;
 
-	while (alt_msgdma_standard_descriptor_sync_transfer(from_dma,
+	while (alt_msgdma_standard_descriptor_async_transfer(from_dma,
 			in_base)
 			!= 0);
 
-	//while(!got_mem_yet);
-    //unsigned int guckjdfashjkde = japan_out[0];
+
+	while(!got_mem_yet);
 
 	alt_dcache_flush_all();
 	printf("%p ::: %p \n", japan, japan_out);
@@ -111,9 +123,16 @@ int main()
     for(uint32_t i = 0; i < 40; i++)
     {
     	alt_dcache_flush_all();
-	    printf("goted\n [%u]: %X\n", i, japan_out[i]);
+    	uint32_t real_talk = IORD_32DIRECT(japan_out,i*4);
+	    printf("goted\n [%u]: %X\n", i, real_talk);//japan_out[i]);
     }
 
+    for(unsigned int i = 2; i < 40; i++)
+    {
+  	  printf("%X - ", ~japan[i]);
+  //	  IOWR_32DIRECT(japan,i*4, i);
+  //	  alt_dcache_flush_all();
+    }
     printf("\n");
 
 

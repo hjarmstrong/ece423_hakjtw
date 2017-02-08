@@ -1,9 +1,33 @@
-23:11:41 **** Incremental Build of configuration Nios II for project idct_async_test ****
+20:07:12 **** Incremental Build of configuration Nios II for project idct_async_test ****
 make all 
 Info: Building ../idct_async_test_bsp/
-C:/software/Altera/15.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../idct_async_test_bsp/
+C:/Software/Altera/15.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../idct_async_test_bsp/
 [BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc -xc -MP -MMD -c -I../idct_async_test_bsp//HAL/inc -I../idct_async_test_bsp/ -I../idct_async_test_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O3 -g -Wall -std=c99  -mno-hw-div -mhw-mul -mno-hw-mulx  -o obj/default/hello_world.o hello_world.c
+hello_world.c: In function 'main':
+hello_world.c:54:3: warning: format '%d' expects argument of type 'int *', but argument 2 has type 'uint32_t *' [-Wformat=]
+   scanf("%d", &t);
+   ^
+hello_world.c:54:3: warning: format '%d' expects argument of type 'int *', but argument 2 has type 'uint32_t *' [-Wformat=]
+hello_world.c:127:6: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+      printf("goted\n [%u]: %X\n", i, real_talk);//japan_out[i]);
+      ^
+hello_world.c:127:6: warning: format '%X' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' [-Wformat=]
+hello_world.c:127:6: warning: format '%u' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+hello_world.c:127:6: warning: format '%X' expects argument of type 'unsigned int', but argument 3 has type 'uint32_t' [-Wformat=]
+hello_world.c:132:6: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+      printf("%X - ", ~japan[i]);
+      ^
+hello_world.c:132:6: warning: format '%X' expects argument of type 'unsigned int', but argument 2 has type 'uint32_t' [-Wformat=]
+Info: Linking idct_async_test.elf
+nios2-elf-g++  -T'../idct_async_test_bsp//linker.x' -msys-crt0='../idct_async_test_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -L../idct_async_test_bsp/   -Wl,-Map=idct_async_test.map   -O3 -g -Wall -std=c99  -mno-hw-div -mhw-mul -mno-hw-mulx  -o idct_async_test.elf obj/default/hello_world.o -lm -msys-lib=m
+nios2-elf-insert idct_async_test.elf --thread_model hal --cpu_name cpu --qsys true --simulation_enabled false --id 0 --sidp 0x20101560 --timestamp 1486438260 --stderr_dev jtag_uart --stdin_dev jtag_uart --stdout_dev jtag_uart --sopc_system_name ECE423_QSYS --quartus_project_dir "C:/ece423_hakjtw/ece423_prefab_w2017/ece423_prefab" --jdi C:/ece423_hakjtw/ece423_prefab_w2017/ece423_prefab/software/idct_async_test_bsp/../../ECE423_C5G.jdi --sopcinfo C:/ece423_hakjtw/ece423_prefab_w2017/ece423_prefab/software/idct_async_test_bsp/../../ECE423_QSYS.sopcinfo
+Info: (idct_async_test.elf) 113 KBytes program size (code + initialized data).
+Info:                       524278 KBytes free for stack + heap.
+Info: Creating idct_async_test.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source idct_async_test.elf >idct_async_test.objdump
 [idct_async_test build complete]
 
-23:11:43 Build Finished (took 2s.3ms)
+20:07:18 Build Finished (took 5s.625ms)
 
