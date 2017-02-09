@@ -1660,3 +1660,64 @@ org.eclipse.cdt.debug.mi.core.cdi.MI2CDIException: Inferior terminated[]
 
 !ENTRY com.altera.sbtgui.launch 1 0 2017-02-07 20:07:22.180
 !MESSAGE Executing: [C:/software/altera/15.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x20101560 --id=0x0 --timestamp=1486438260 /cygdrive/c/ece423_hakjtw/ece423_prefab_w2017/ece423_prefab/software/idct_async_test/idct_async_test.elf]
+!SESSION 2017-02-09 11:35:12.204 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/software/altera/15.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/software/altera/15.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.core.resources 2 10035 2017-02-09 11:35:35.829
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2017-02-09 11:35:49.235
+!MESSAGE Warning: EGit couldn't detect the installation path "gitPrefix" of native Git. Hence EGit can't respect system level
+Git settings which might be configured in ${gitPrefix}/etc/gitconfig under the native Git installation directory.
+The most important of these settings is core.autocrlf. Git for Windows by default sets this parameter to true in
+this system level configuration. The Git installation location can be configured on the
+Team > Git > Configuration preference page's 'System Settings' tab.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-02-09 11:36:37.601
+!MESSAGE Executing: [C:/software/altera/15.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-1]' --device=1 --instance=0 --stop --sidp=0x20101560 --id=0x0 --timestamp=1486438260]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-02-09 11:36:40.252
+!MESSAGE Executing: [C:/software/altera/15.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-1]' --device=1 --instance=0 --go --sidp=0x20101560 --id=0x0 --timestamp=1486438260 /cygdrive/c/ece423_hakjtw/ece423_prefab_w2017/ece423_prefab/software/idct_async_test/idct_async_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-02-09 11:37:51.165
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-02-09 11:37:52.321
+!MESSAGE Executing: [C:/software/altera/15.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-1]' --device=1 --instance=0 --sidp=0x20101560 --id=0x0 --timestamp=1486438260 /cygdrive/c/ece423_hakjtw/ece423_prefab_w2017/ece423_prefab/software/idct_async_test/idct_async_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-02-09 11:37:56.024
+!MESSAGE Executing: [C:/software/altera/15.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-1]' --device=1 --instance=0 --tcpport=auto --sidp=0x20101560 --id=0x0 --timestamp=1486438260]
+
+!ENTRY org.eclipse.cdt.debug.mi.core 4 42 2017-02-09 11:40:13.246
+!MESSAGE Internal Error
+!STACK 0
+org.eclipse.cdt.debug.mi.core.cdi.MI2CDIException: Inferior terminated[]
+	at org.eclipse.cdt.debug.mi.core.cdi.SharedLibraryManager.getMIShareds(SharedLibraryManager.java:123)
+	at org.eclipse.cdt.debug.mi.core.cdi.SharedLibraryManager.updateState(SharedLibraryManager.java:189)
+	at org.eclipse.cdt.debug.mi.core.cdi.SharedLibraryManager.update(SharedLibraryManager.java:137)
+	at org.eclipse.cdt.debug.mi.core.cdi.EventManager.processSuspendedEvent(EventManager.java:329)
+	at org.eclipse.cdt.debug.mi.core.cdi.EventManager.update(EventManager.java:101)
+	at java.util.Observable.notifyObservers(Unknown Source)
+	at org.eclipse.cdt.debug.mi.core.MISession.notifyObservers(MISession.java:797)
+	at org.eclipse.cdt.debug.mi.core.EventThread.run(EventThread.java:47)
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-02-09 11:40:45.680
+!MESSAGE Executing: [C:/software/altera/15.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-1]' --device=1 --instance=0 --stop --sidp=0x20101560 --id=0x0 --timestamp=1486438260]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-02-09 11:40:48.239
+!MESSAGE Executing: [C:/software/altera/15.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-1]' --device=1 --instance=0 --go --sidp=0x20101560 --id=0x0 --timestamp=1486438260 /cygdrive/c/ece423_hakjtw/ece423_prefab_w2017/ece423_prefab/software/idct_async_test/idct_async_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-02-09 11:41:34.119
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-02-09 11:41:35.778
+!MESSAGE Executing: [C:/software/altera/15.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-1]' --device=1 --instance=0 --sidp=0x20101560 --id=0x0 --timestamp=1486438260 /cygdrive/c/ece423_hakjtw/ece423_prefab_w2017/ece423_prefab/software/idct_async_test/idct_async_test.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2017-02-09 11:41:39.572
+!MESSAGE Executing: [C:/software/altera/15.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-1]' --device=1 --instance=0 --tcpport=auto --sidp=0x20101560 --id=0x0 --timestamp=1486438260]

@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Mon Feb 06 22:40:33 2017
+Analysis & Synthesis Status : Successful - Thu Feb 09 12:55:42 2017
 Quartus Prime Version : 15.1.0 Build 185 10/21/2015 SJ Standard Edition
 Revision Name : ECE423_C5G
 Top-level Entity Name : ECE423_C5G
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 17218
+Total registers : 23295
 Total pins : 203
 Total virtual pins : 0
-Total block memory bits : 427,160
+Total block memory bits : 463,752
 Total DSP Blocks : 3
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0

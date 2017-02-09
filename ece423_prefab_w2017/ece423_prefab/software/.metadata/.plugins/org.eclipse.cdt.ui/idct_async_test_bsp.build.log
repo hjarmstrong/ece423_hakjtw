@@ -1,6 +1,6 @@
-19:40:54 **** Incremental Build of configuration Nios II for project idct_async_test_bsp ****
+11:36:16 **** Build of configuration Nios II for project idct_async_test_bsp ****
 make all 
 [BSP build complete]
 
-19:40:55 Build Finished (took 1s.829ms)
+11:36:18 Build Finished (took 1s.562ms)
 

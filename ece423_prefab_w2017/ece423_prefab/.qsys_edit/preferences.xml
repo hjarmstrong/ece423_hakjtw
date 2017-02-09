@@ -3,11 +3,12 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="447" />
+   <connections preferredWidth="575" />
    <irq preferredWidth="34" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
- <window width="1920" height="1050" x="0" y="0" />
+ <library
+   expandedCategories="Library/Memory Interfaces and Controllers/SDRAM,Library/Interface Protocols/PCI Express/QSYS Example Designs,Library/Basic Functions/DMA/mSGDMA Sub-core,Library/Basic Functions/On Chip Memory,Library/Interface Protocols/Ethernet/Reference Design Components,Library/Interface Protocols/PCI Express/Example Design Components,Library/Processors and Peripherals/Hard Processor Components,Library/Interface Protocols/Transceiver PLL,Library/University Program/Generic IO,Library/Processors and Peripherals/Co-Processors/Nios II Custom Instructions,Library/Interface Protocols/Serial,Library/Basic Functions/Simulation; Debug and Verification/Simulation,Library/Basic Functions/Bridges and Adaptors/Memory Mapped,Library/Processors and Peripherals/Hard Processor Systems,Library/University Program/Audio &amp; Video,Library/Processors and Peripherals/Inter-Process Communication,Library/University Program/Audio &amp; Video/Video,Library/Qsys Interconnect/Memory-Mapped Alpha,Library/Basic Functions/DMA,Library/Interface Protocols/Ethernet,Library/Memory Interfaces and Controllers/Memory Interfaces with UniPHY,Library,Library/Processors and Peripherals/Co-Processors,Library/DSP/Video and Image Processing,Library/University Program/Memory,Library/Interface Protocols/PCI Express,Library/University Program/Clock,Library/Memory Interfaces and Controllers/Flash,Project,Library/Qsys Interconnect,Library/Basic Functions,Library/Processors and Peripherals/Peripherals,Library/DSP/Error Detection and Correction,Library/Qsys Interconnect/Memory-Mapped,Library/Interface Protocols,Library/Low Power,Library/Basic Functions/Configuration and Programming,Library/Memory Interfaces and Controllers/Memory Interfaces with ALTMEMPHY,Library/DSP/Filters,Library/DSP,Library/Processors and Peripherals,Library/Basic Functions/Simulation; Debug and Verification/Debug and Performance,Library/Basic Functions/Arithmetic,Library/Basic Functions/Simulation; Debug and Verification,Library/Interface Protocols/Audio &amp; Video,Library/Memory Interfaces and Controllers,Library/Qsys Interconnect/Interrupt,Library/Basic Functions/Bridges and Adaptors/Streaming,Library/University Program,Library/Basic Functions/Bridges and Adaptors,Library/Basic Functions/Simulation; Debug and Verification/Verification" />
+ <window width="1296" height="1010" x="1912" y="-8" />
  <generation synthesis="VERILOG" />
 </preferences>
