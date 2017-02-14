@@ -1,9 +1,9 @@
-11:54:34 **** Incremental Build of configuration Nios II for project Lab01_reset_fix ****
+23:43:21 **** Incremental Build of configuration Nios II for project Lab01_reset_fix ****
 make all 
 Info: Building ../Lab01_reset_fix_bsp/
 C:/software/Altera/15.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C ../Lab01_reset_fix_bsp/
 Makefile not up to date.
-../../ECE423_QSYS.sopcinfo has been modified since the BSP was generated.
+settings.bsp has been modified since the BSP Makefile was generated.
 
 Generate the BSP to update the Makefile, and then build again.
 
@@ -14,8 +14,8 @@ To generate from Eclipse:
 To generate from the command line:
  nios2-bsp-generate-files --settings=<settings file> --bsp-dir=<target bsp files directory>
 
-make[1]: *** [public.mk] Error 1
+make[1]: *** [makefile] Error 1
 make: *** [../Lab01_reset_fix_bsp/-recurs-make-lib] Error 2
 
-11:54:36 Build Finished (took 2s.281ms)
+23:43:24 Build Finished (took 2s.453ms)
 
