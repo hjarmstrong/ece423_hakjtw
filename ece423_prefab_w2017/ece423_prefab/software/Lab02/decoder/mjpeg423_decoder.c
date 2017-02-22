@@ -28,7 +28,7 @@
 #include <altera_msgdma.h>
 #include <altera_msgdma_descriptor_regs.h>
 #include <altera_msgdma_csr_regs.h>
-#include "common/mjpeg423_types.h"
+#include "../common/mjpeg423_types.h"
 
 #define NUM_BUFFERS 10
 
@@ -36,7 +36,8 @@
 #define DCT_BLOCK_SIZE (32)
 #define COLOUR_BLOCK_SIZE (16)
 
-volatile int got_mem_yet = 0;
+volatile int mm_to_st_complete = 0;
+volatile int st_to_mm_complete = 0;
 
 //Stand-in DCAC type and color block
 // uint32_t *p_dct_block_buffer = malloc(sizeof(uint32_t) * DCT_BLOCK_SIZE);
@@ -45,20 +46,17 @@ volatile int got_mem_yet = 0;
 alt_msgdma_dev *mm_to_st_dma_dev, *st_to_mm_dma_dev;
 alt_msgdma_standard_descriptor *mm_to_st_desc, *st_to_mm_desc;
 
-mm_to_st_desc = malloc(sizeof(alt_msgdma_standard_descriptor));//(alt_msgdma_standard_descriptor*) memalign(32,
-    //3 * sizeof(alt_msgdma_standard_descriptor));
-st_to_mm_desc = malloc(sizeof(alt_msgdma_standard_descriptor));//(alt_msgdma_standard_descriptor*) memalign(32,
-    //3 * sizeof(alt_msgdma_standard_descriptor));
-
-mm_to_st_dma_dev = alt_msgdma_open(TO_IDCT_HWACEL_CSR_NAME);
-st_to_mm_dma_dev = alt_msgdma_open(FROM_IDCT_HWACEL_CSR_NAME);
-
 bool init = FALSE;
 ece423_video_display *disp = (void *)0;
 
-static void dma_done_cb (void *context)
+static void mm_to_st_done (void *context)
 {
-	got_mem_yet = 1;
+	mm_to_st_complete = 1;
+}
+
+static void st_to_mm_done (void *context)
+{
+	st_to_mm_complete = 1;
 }
 
 //main decoder function
@@ -71,6 +69,14 @@ void mjpeg423_decode(const char* filename_in, FAT_HANDLE sd_fat_handle)
 
     //file streams(changed to fat handle)
     FAT_FILE_HANDLE file_in;
+
+    mm_to_st_desc = malloc(sizeof(alt_msgdma_standard_descriptor));//(alt_msgdma_standard_descriptor*) memalign(32,
+        //3 * sizeof(alt_msgdma_standard_descriptor));
+    st_to_mm_desc = malloc(sizeof(alt_msgdma_standard_descriptor));//(alt_msgdma_standard_descriptor*) memalign(32,
+        //3 * sizeof(alt_msgdma_standard_descriptor));
+
+    mm_to_st_dma_dev = alt_msgdma_open(TO_IDCT_HWACEL_CSR_NAME);
+    st_to_mm_dma_dev = alt_msgdma_open(FROM_IDCT_HWACEL_CSR_NAME);
 
     if((file_in = Fat_FileOpen(sd_fat_handle, filename_in)) == NULL) error_and_exit("cannot open input file");
     // char* filename_out = malloc(strlen(filenamebase_out)+1);
@@ -132,16 +138,16 @@ void mjpeg423_decode(const char* filename_in, FAT_HANDLE sd_fat_handle)
     //set it back to beginning of payload
     if(!Fat_FileSeek(file_in, SEEK_SET, 5 * sizeof(uint32_t))) error_and_exit("cannot seek into file");
 
-//Callback Functions for DMA
+// Callback Functions for DMA
     alt_msgdma_register_callback(
     	mm_to_st_dma_dev,
-    	dma_done_cb,
+    	mm_to_st_done,
     	ALTERA_MSGDMA_CSR_GLOBAL_INTERRUPT_MASK,
     	0);
 
     alt_msgdma_register_callback(
     	st_to_mm_dma_dev,
-    	dma_done_cb,
+    	st_to_mm_done,
     	ALTERA_MSGDMA_CSR_GLOBAL_INTERRUPT_MASK,
     	0);
 
@@ -183,24 +189,24 @@ void mjpeg423_decode(const char* filename_in, FAT_HANDLE sd_fat_handle)
           (alt_u32 *) YDCAC[b] , sizeof(uint32_t) * DCT_BLOCK_SIZE,
           DESC_CONTROL));
 
+          while (alt_msgdma_standard_descriptor_async_transfer(mm_to_st_dma_dev,
+                 mm_to_st_desc)
+                 != 0);
+
+          while(!mm_to_st_complete);
+          mm_to_st_complete = 0;
+
           while(0 != alt_msgdma_construct_standard_st_to_mm_descriptor(st_to_mm_dma_dev,
           st_to_mm_desc,
           (alt_u32 *) Yblock[b], sizeof(uint32_t) * COLOUR_BLOCK_SIZE,
           DESC_CONTROL));
 
-          while (alt_msgdma_standard_descriptor_async_transfer(mm_to_st_dma_dev,
-                 mm_to_st_desc)
-                 != 0);
-
-          while(!got_mem_yet);
-          got_mem_yet = 0;
-
           while (alt_msgdma_standard_descriptor_async_transfer(st_to_mm_dma_dev,
                  st_to_mm_desc)
                  != 0);
 
-          while(!got_mem_yet);
-          got_mem_yet = 0;
+          while(!st_to_mm_complete);
+          st_to_mm_complete = 0;
         }
 
         for(int b = 0; b < hCb_size*wCb_size; b++)
@@ -217,19 +223,19 @@ void mjpeg423_decode(const char* filename_in, FAT_HANDLE sd_fat_handle)
           (alt_u32 *) Cbblock[b], sizeof(uint32_t) * COLOUR_BLOCK_SIZE,
           DESC_CONTROL));
 
-          while (alt_msgdma_standard_descriptor_async_transfer(mm_to_st_dma_dev,
+					while (alt_msgdma_standard_descriptor_async_transfer(mm_to_st_dma_dev,
                  mm_to_st_desc)
                  != 0);
 
-          while(!got_mem_yet);
-          got_mem_yet = 0;
+          while(!mm_to_st_complete);
+          mm_to_st_complete = 0;
 
           while (alt_msgdma_standard_descriptor_async_transfer(st_to_mm_dma_dev,
                  st_to_mm_desc)
                  != 0);
 
-          while(!got_mem_yet);
-          got_mem_yet = 0;
+          while(!st_to_mm_complete);
+          st_to_mm_complete = 0;
         }
 
         for(int b = 0; b < hCb_size*wCb_size; b++)
@@ -246,19 +252,19 @@ void mjpeg423_decode(const char* filename_in, FAT_HANDLE sd_fat_handle)
           (alt_u32 *) Crblock[b], sizeof(uint32_t) * COLOUR_BLOCK_SIZE,
           DESC_CONTROL));
 
-          while (alt_msgdma_standard_descriptor_async_transfer(mm_to_st_dma_dev,
+					while (alt_msgdma_standard_descriptor_async_transfer(mm_to_st_dma_dev,
                  mm_to_st_desc)
                  != 0);
 
-          while(!got_mem_yet);
-          got_mem_yet = 0;
+          while(!mm_to_st_complete);
+          mm_to_st_complete = 0;
 
           while (alt_msgdma_standard_descriptor_async_transfer(st_to_mm_dma_dev,
                  st_to_mm_desc)
                  != 0);
 
-          while(!got_mem_yet);
-          got_mem_yet = 0;
+          while(!st_to_mm_complete);
+          st_to_mm_complete = 0;
         }
 
 #ifdef PROFILEING

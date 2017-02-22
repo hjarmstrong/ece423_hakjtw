@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="ECE423_QSYS" kind="ECE423_QSYS" version="1.0" fabric="QSYS">
  <!-- Format version 15.1 185 (Future versions may contain additional information.) -->
- <!-- 2017.02.09.12:45:26 -->
+ <!-- 2017.02.22.13:09:07 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1486662324</value>
+  <value>1487786944</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -37631,7 +37631,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1486662324</value>
+   <value>1487786944</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -37651,7 +37651,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1486662324</value>
+   <value>1487786944</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -37667,7 +37667,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1486662324</value>
+   <value>1487786944</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>

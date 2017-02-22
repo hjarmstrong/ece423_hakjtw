@@ -99,7 +99,7 @@
     </sld_info>
     <sld_info hpath="ECE423_QSYS:u0" name="u0">
       <assignment_values>
-        <assignment_value text="QSYS_NAME ECE423_QSYS HAS_SOPCINFO 1 GENERATION_ID 1486662324"/>
+        <assignment_value text="QSYS_NAME ECE423_QSYS HAS_SOPCINFO 1 GENERATION_ID 1487786944"/>
       </assignment_values>
       <parameters/>
     </sld_info>

@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="DEAD" key="selection"/>
+		<item value="DESC_CONTROL" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="dead"/>
-			<item value="user"/>
+			<item value="st_to_mm_done"/>
 			<item value="DESC_CONTROL"/>
-			<item value="CSR_NAME"/>
-			<item value="idct"/>
-			<item value="dma"/>
-			<item value="width"/>
-			<item value="-D"/>
+			<item value="dma_done_cb"/>
+			<item value="ece423_sd"/>
+			<item value="INC"/>
+			<item value="mjpeg423_decode"/>
+			<item value="disp"/>
+			<item value="user_flag"/>
 		</list>
 		<list key="replacehistory">
 		</list>

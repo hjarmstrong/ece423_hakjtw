@@ -121,6 +121,14 @@
          type = "String";
       }
    }
+   element ECE423_QSYS
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
+         type = "String";
+      }
+   }
    element Pixel_Conv
    {
       datum _sortIndex
@@ -262,6 +270,11 @@
       {
          value = "25";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
       }
    }
    element jtag_uart

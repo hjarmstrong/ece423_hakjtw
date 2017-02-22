@@ -2,7 +2,7 @@ set_global_assignment -entity "ECE423_QSYS" -library "ECE423_QSYS" -name IP_TOOL
 set_global_assignment -entity "ECE423_QSYS" -library "ECE423_QSYS" -name IP_TOOL_VERSION "15.1"
 set_global_assignment -entity "ECE423_QSYS" -library "ECE423_QSYS" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "ECE423_QSYS" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../ECE423_QSYS.sopcinfo"]
-set_global_assignment -entity "ECE423_QSYS" -library "ECE423_QSYS" -name SLD_INFO "QSYS_NAME ECE423_QSYS HAS_SOPCINFO 1 GENERATION_ID 1486662324"
+set_global_assignment -entity "ECE423_QSYS" -library "ECE423_QSYS" -name SLD_INFO "QSYS_NAME ECE423_QSYS HAS_SOPCINFO 1 GENERATION_ID 1487786944"
 set_global_assignment -library "ECE423_QSYS" -name MISC_FILE [file join $::quartus(qip_path) "../ECE423_QSYS.cmp"]
 set_global_assignment -library "ECE423_QSYS" -name SLD_FILE [file join $::quartus(qip_path) "ECE423_QSYS.regmap"]
 set_global_assignment -library "ECE423_QSYS" -name SLD_FILE [file join $::quartus(qip_path) "ECE423_QSYS.debuginfo"]
@@ -16,7 +16,7 @@ set_global_assignment -entity "ECE423_QSYS" -library "ECE423_QSYS" -name IP_COMP
 set_global_assignment -entity "ECE423_QSYS" -library "ECE423_QSYS" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "ECE423_QSYS" -library "ECE423_QSYS" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "ECE423_QSYS" -library "ECE423_QSYS" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "ECE423_QSYS" -library "ECE423_QSYS" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTQ4NjY2MjMyNA==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "ECE423_QSYS" -library "ECE423_QSYS" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTQ4Nzc4Njk0NA==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "ECE423_QSYS" -library "ECE423_QSYS" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBW::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "ECE423_QSYS" -library "ECE423_QSYS" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::NUNHWEZDNUM2RjI3Qzc=::QXV0byBERVZJQ0U="
 set_global_assignment -entity "ECE423_QSYS" -library "ECE423_QSYS" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::N19INg==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="

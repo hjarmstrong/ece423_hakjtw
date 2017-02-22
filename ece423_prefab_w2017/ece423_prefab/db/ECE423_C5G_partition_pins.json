@@ -4,70 +4,6 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "LEDG[0]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDG[1]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDG[2]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDG[3]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDG[4]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDG[5]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDG[6]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDG[7]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[0]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[1]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[2]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[3]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[4]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[5]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[6]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[7]",
-					"strict" : false
-				},
-				{
 					"name" : "HDMI_TX_D[0]",
 					"strict" : false
 				},
@@ -168,10 +104,6 @@
 					"strict" : false
 				},
 				{
-					"name" : "I2C_SCL",
-					"strict" : false
-				},
-				{
 					"name" : "HDMI_TX_DE",
 					"strict" : false
 				},
@@ -181,6 +113,10 @@
 				},
 				{
 					"name" : "HDMI_TX_VS",
+					"strict" : false
+				},
+				{
+					"name" : "I2C_SCL",
 					"strict" : false
 				},
 				{
@@ -276,27 +212,71 @@
 					"strict" : false
 				},
 				{
+					"name" : "LEDG[0]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDG[1]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDG[2]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDG[3]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDG[4]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDG[5]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDG[6]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDG[7]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[0]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[1]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[2]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[3]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[4]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[5]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[6]",
+					"strict" : false
+				},
+				{
+					"name" : "LEDR[7]",
+					"strict" : false
+				},
+				{
 					"name" : "SD_CMD",
-					"strict" : false
-				},
-				{
-					"name" : "SD_DAT[0]",
-					"strict" : false
-				},
-				{
-					"name" : "SD_DAT[1]",
-					"strict" : false
-				},
-				{
-					"name" : "SD_DAT[2]",
-					"strict" : false
-				},
-				{
-					"name" : "SD_DAT[3]",
-					"strict" : false
-				},
-				{
-					"name" : "I2C_SDA",
 					"strict" : false
 				},
 				{
@@ -396,11 +376,31 @@
 					"strict" : false
 				},
 				{
-					"name" : "CLOCK_125_p",
+					"name" : "SD_DAT[0]",
+					"strict" : false
+				},
+				{
+					"name" : "SD_DAT[1]",
+					"strict" : false
+				},
+				{
+					"name" : "SD_DAT[2]",
+					"strict" : false
+				},
+				{
+					"name" : "SD_DAT[3]",
+					"strict" : false
+				},
+				{
+					"name" : "I2C_SDA",
 					"strict" : false
 				},
 				{
 					"name" : "CLOCK_50_B7A",
+					"strict" : false
+				},
+				{
+					"name" : "CLOCK_125_p",
 					"strict" : false
 				},
 				{
