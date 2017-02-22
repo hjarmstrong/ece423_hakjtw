@@ -178,7 +178,7 @@ begin
 					  idct_col_count <= 0;
 					  pass_sel <= '0';
 					  state <= "00";
-					  elsif (idct_row_count = 6) then
+					  elsif (idct_row_count = 4) then
 						idct_row_count <= 0;
 						idct_col_count <= idct_col_count + 1;
 				    else
