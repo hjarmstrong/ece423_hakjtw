@@ -105,13 +105,13 @@ begin
 	    passselrow: for J in 0 to 7 generate
 		    
 			hwin(I,J) <= input_buffer_holder(I,J) when pass_sel = '0' else
-	        workspace(I,J);
+	        workspace(J,I);
 			
 			process(pass_sel, hwout(I,J)) begin
 				if (pass_sel = '0') then
 					workspace(I,J) <= hwout(I,J); 
 				else
-					output_buffer_holder(I,J) <= hwout(I,J);
+					output_buffer_holder(J,I) <= hwout(I,J);
 				end if; 
 			end process;
 			
