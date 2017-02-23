@@ -68,7 +68,7 @@ end component;
 	signal idct_col_count: integer range 0 to 15 := 0;
 	signal pass_wait_count: integer range 0 to 15 := 0;
 	
-	signal pass_sel : std_logic;			-- 0: Pass 1; 1: Pass 2
+	signal pass_sel : std_logic := '0';			-- 0: Pass 1; 1: Pass 2
 begin
 
    dst_data <= dataBuffer;
@@ -127,6 +127,7 @@ begin
 		  idct_row_count <= 0;
 		  idct_col_count <= 0;
 		  pass_wait_count <= 0;
+                  pass_sel <= '0';
 	 elsif (rising_edge(clk)) then
 	     if (state = "00") then
 		      if (src_valid = '1') then
@@ -157,8 +158,14 @@ begin
 			  end if;
 		  elsif (state = "10") then
 		  	if (pass_wait_count = 5) then
-			      state <= "11"; -- transmit
+			          state <= "11"; -- transmit
 				  pass_wait_count <= 0;
+                                  dst_valid <= '1';
+				  dataBuffer <= output_buffer_holder(idct_col_count, idct_row_count)(7 downto 0) & 
+				  output_buffer_holder(idct_col_count, idct_row_count + 1)(7 downto 0) & 
+				  output_buffer_holder(idct_col_count, idct_row_count + 2)(7 downto 0) &
+				  output_buffer_holder(idct_col_count, idct_row_count + 3)(7 downto 0);
+                                  idct_row_count <= 4;
 			   else
 			     pass_wait_count <= pass_wait_count + 1;
 			  end if;
