@@ -135,7 +135,7 @@ begin
 					--input_buffer_holder(idct_col_count, idct_row_count + 1) <= src_data(31 downto 16);
 					-- Little endian fix? 
 					input_buffer_holder(idct_col_count, idct_row_count) <= (src_data(15 downto 8) & src_data(7 downto 0));
-					input_buffer_holder(idct_col_count, idct_row_count + 1) <= src_data(31 downto 23) & src_data(22 downto 16) ;
+					input_buffer_holder(idct_col_count, idct_row_count + 1) <= src_data(31 downto 24) & src_data(23 downto 16) ;
 					if ((idct_col_count = 7) and (idct_row_count = 6)) then
 					    state <= "001"; -- wait/do operation...
 					    src_ready <= '0';
