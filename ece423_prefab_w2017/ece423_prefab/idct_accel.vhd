@@ -54,7 +54,7 @@ port(
 end component;
 
     signal dataBuffer: STD_LOGIC_VECTOR(31 downto 0);
-	 signal state: std_logic_vector(1 downto 0);
+	 signal state: std_logic_vector(2 downto 0);
 	
 	type worker_mat_t is array (0 to 7, 0 to 7) of std_logic_vector(15 downto 0);
    signal workspace: worker_mat_t;
@@ -123,13 +123,13 @@ begin
 	 if (reset = '1') then
 	     src_ready <= '1';
 		  dst_valid <= '0';
-		  state <= "00"; -- Read Data
+		  state <= "000"; -- Read Data
 		  idct_row_count <= 0;
 		  idct_col_count <= 0;
 		  pass_wait_count <= 0;
                   pass_sel <= '0';
 	 elsif (rising_edge(clk)) then
-	     if (state = "00") then
+	     if (state = "000") then
 		      if (src_valid = '1') then
 				    --input_buffer_holder(idct_col_count, idct_row_count) <= src_data(15 downto 0);
 					--input_buffer_holder(idct_col_count, idct_row_count + 1) <= src_data(31 downto 16);
@@ -137,7 +137,7 @@ begin
 					input_buffer_holder(idct_col_count, idct_row_count) <= (src_data(15 downto 8) & src_data(7 downto 0));
 					input_buffer_holder(idct_col_count, idct_row_count + 1) <= src_data(31 downto 23) & src_data(22 downto 16) ;
 					if ((idct_col_count = 7) and (idct_row_count = 6)) then
-					    state <= "01"; -- wait/do operation...
+					    state <= "001"; -- wait/do operation...
 					    src_ready <= '0';
 					    idct_row_count <= 0;
 					    idct_col_count <= 0;					
@@ -148,17 +148,17 @@ begin
 					    idct_row_count <= idct_row_count + 2;
 					end if;
 			   end if;
-		  elsif (state = "01") then
+		  elsif (state = "001") then
 		      if (pass_wait_count = 5) then
-			      state <= "10"; -- idct pass 2
+			      state <= "010"; -- idct pass 2
 				  pass_wait_count <= 0;
 				  pass_sel <= '1';
 			   else
 			     pass_wait_count <= pass_wait_count + 1;
 			  end if;
-		  elsif (state = "10") then
+		  elsif (state = "010") then
 		  	if (pass_wait_count = 5) then
-			          state <= "11"; -- transmit
+			          state <= "011"; -- transmit
 				  pass_wait_count <= 0;
                                   dst_valid <= '1';
 				  dataBuffer <= output_buffer_holder(idct_col_count, idct_row_count)(7 downto 0) & 
@@ -169,7 +169,7 @@ begin
 			   else
 			     pass_wait_count <= pass_wait_count + 1;
 			  end if;
-		  elsif (state = "11") then
+		  elsif (state = "011") then
 		      if (dst_ready = '1') then
 			      -- Endianness should not matter here... hopefully
 				  dst_valid <= '1';
@@ -179,12 +179,10 @@ begin
 				  output_buffer_holder(idct_col_count, idct_row_count + 3)(7 downto 0);
 				  
 				  if ((idct_col_count = 7) and (idct_row_count = 4)) then
-					  dst_valid <= '0';
-					  src_ready <= '1';
 					  idct_row_count <= 0;
 					  idct_col_count <= 0;
 					  pass_sel <= '0';
-					  state <= "00";
+					  state <= "100"; -- send final 4
 					  elsif (idct_row_count = 4) then
 						idct_row_count <= 0;
 						idct_col_count <= idct_col_count + 1;
@@ -192,9 +190,14 @@ begin
 					    idct_row_count <= idct_row_count + 4;
 				  end if;
 			   end if;
+		  elsif (state = "100") then
+		      if (dst_ready = '1') then
+		          dst_valid <= '0';
+					 src_ready <= '1';
+					 state <= "000"; -- read
+			   end if;
 		  end if;
 	 end if;
 	 end process;
 	 
 end architecture rtl; -- of idct_accel
-
